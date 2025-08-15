@@ -1,0 +1,15 @@
+meta {
+  name: Cars Delete
+  type: http
+  seq: 5
+}
+
+delete {
+  url: http://localhost:3010/cars/2025
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
