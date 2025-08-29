@@ -1,9 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { CreateGerenteDto } from './dto/create-gerente.dto';
 import { UpdateGerenteDto } from './dto/update-gerente.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
+
 
 @Injectable()
 export class GerenteService {
+
+
+  constructor(private service : PrismaService){
+     
+  }
+
   create(createGerenteDto: CreateGerenteDto) {
     return 'This action adds a new gerente';
   }
@@ -13,7 +21,9 @@ export class GerenteService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} gerente`;
+    return this.service.gerente.findFirst({
+      where: { id },
+    });
   }
 
   update(id: number, updateGerenteDto: UpdateGerenteDto) {
